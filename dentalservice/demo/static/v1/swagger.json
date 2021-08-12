@@ -1,0 +1,106 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "COMP9322-Assignment 2 : Dental Service",
+    "version": "1.0.0",
+    "title": "Dental Service",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "meishichen1106@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath": "/v1",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/dentists": {
+      "get": {
+        "summary": "Get the list of all dentists",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/dentist"
+              },
+              "description": "a list of all dentists"
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/dentists/{dentistName}": {
+      "get": {
+        "summary": "Get information about one specific dentist",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "dentistName",
+            "description": "name of dentist to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/dentist"
+            }
+          },
+          "404": {
+            "description": "Dentist Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "dentist": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": 1,
+          "description": "dentist id"
+        },
+        "name": {
+          "type": "string",
+          "example": "dr.sharon",
+          "description": "dentist name"
+        },
+        "location": {
+          "type": "string",
+          "example": "Burwood",
+          "description": "dentist location"
+        },
+        "specialization": {
+          "type": "string",
+          "enum": [
+            "Oral Surgery",
+            "Orthodontics",
+            "Paediatric Dentistry"
+          ],
+          "example": "Oral Surgery",
+          "description": "dentist specialization"
+        },
+        "phone": {
+          "type": "string",
+          "example": "0451028117"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+! version = 2.0
+
+! sub i'm = i am
+! sub what's = what is
+
+
++ (hi|hello)
+- Hello mate!
+- Hello, how are you :)
+
++ how are you
+- I'm good! Thank you
+
++ what is your name
+- My name is bot :D
+
++ i am (happy|excited|thrilled)
+- I am happy too for you!
+
++ what is my (name|username)
+- check username 
+
++ [*] (bye|goodbye) [*]
+- end
++ [*] yes [*]
+- yes
+
++ [*] no [*]
+- no

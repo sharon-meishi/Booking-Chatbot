@@ -1,0 +1,175 @@
+swagger: "2.0"
+info:
+  description: "COMP9322-Assignment 2 : Timeslot Service"
+  version: "1.0.0"
+  title: "Timeslot Service"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "meishichen1106@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "timeslot.swagger.io"
+basePath: "/v1"
+schemes:
+- "https"
+- "http"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+
+
+paths:
+  /timeslots/dental:
+    get:
+      summary: Get timeslots for one specific dentist
+      parameters:
+      - in: query
+        name: dentist_name
+        description: "name of dentist"
+        required: true
+        type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/timeslot'
+
+        404:
+          description: Not Found
+
+  /timeslots/dental/reserve:
+    post:
+      summary: Make an appointment
+      parameters:
+      - in: body
+        name: dentist_name
+        description: booking details
+        required: true
+        schema:
+          type: object
+          properties:
+            dentist_name:
+              type: string
+              example: 'dr.sharon'
+              description: "name of dentist"
+            time:
+              type: integer
+              example: 9
+              description: "Exact time of the appointment"
+            client_name:
+              type: string
+              example: 'meishi'
+              description: "Name of the client"
+      responses:
+        201:
+          description: Appointment made
+          schema:
+            $ref: '#/definitions/appointment'
+        400:
+          description: Bad requests
+        404:
+          description: Timeslot Not Found
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: "The timeslot you want to book is not exist"
+    
+  /timeslots/dental/cancel:
+    put:
+      summary: Cancel an appointment
+      parameters:
+      - in: query
+        name: booking_Id
+        description: "ID of booking to be canceled"
+        required: true
+        type: "integer"
+        format: "int32"
+      responses:
+        201:
+          description: Appointment canceled
+          schema:
+            $ref: '#/definitions/appointment'
+        400:
+          description: Bad requests
+        404:
+          description: Appointment Not Found
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: "The appointment you want to cancel is not exist"
+definitions:
+  timeslot:
+    type: object
+    properties:
+      dentist_name:
+        type: string
+        example: dr.sharon
+      time:
+        type: integer
+        enum:
+          - 9
+          - 10
+          - 11
+          - 12
+          - 13
+          - 14
+          - 15
+          - 16
+        example: 9
+        description: time of the booking
+      status:
+        type: string
+        enum:
+          - "available"
+          - "booked"
+          - "not available"
+        example: "available"
+        description: status of the timeslot
+  
+  appointment:
+    type: object
+    properties:
+      booking_id:
+        type: integer
+        example: 1
+      dentist_name:
+        type: string
+        example: "Dr.Sharon"
+      client_name:
+        type: string
+        example: "Dan"
+      time:
+        type: string
+        example: "9:00am"
+      status:
+        type: string
+        example: confirmed
+
+    
+        
+          
+          
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
