@@ -1,8 +1,9 @@
 import React from 'react'
+import Chatbot from './pages/Chatbot'
 
 function App() {
   return (
-    <div>hello</div>
+    <Chatbot/>
   );
 }
 
