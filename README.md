@@ -5,7 +5,7 @@
 This is an assignment for COMP9322 in UNSW. Following is the usage instruction of the dental chatbot service. The chatbot will help you to book a appointment with your selected dentist for tomorrow.\
 
 **Chatbot implementation**: ML-based chatbot with wit\
-**Frontend template references**: https://codepen.io/lilgreenland/pen/pyVvqB\
+**Frontend template references**: https://codepen.io/lilgreenland/pen/pyVvqB \
 **Database**:SQLite
 
 *'Frontend' and 'Backend' folder are under constrtuction, please ignore, a new interface built with React framework is coming*
