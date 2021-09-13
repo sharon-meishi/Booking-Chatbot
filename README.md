@@ -6,7 +6,7 @@ This is an assignment for COMP9322 in UNSW. Following is the usage instruction o
 
 **Chatbot implementation**: ML-based chatbot with wit
 **Frontend template references**: https://codepen.io/lilgreenland/pen/pyVvqB \
-**Database**:SQLite
+**Database**: SQLite
 
 *'Frontend' and 'Backend' folder are under constrtuction, please ignore, a new interface built with React framework is coming*
 
